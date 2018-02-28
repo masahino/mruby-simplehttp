@@ -200,7 +200,7 @@ class SimpleHttp
         header["Content-Length"] = (body || '').length
     end
     header.keys.sort.each do |key|
-      str += sprintf("%s: %s", key, header[key]) + SEP
+      str += sprintf("%s: %s", key.split('-').map {|s| s.capitalize}.join('-'), header[key]) + SEP
     end
     str + SEP + body
   end
